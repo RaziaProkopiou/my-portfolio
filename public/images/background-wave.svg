@@ -1,0 +1,14 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1920 600"
+  preserveAspectRatio="none"
+  class="w-full h-full"
+>
+  <path
+    d="M0,400 
+       C400,300 800,500 1200,400 
+       C1500,320 1800,500 1920,380 
+       L1920,600 L0,600 Z"
+    fill="rgba(255, 255, 255, 0.6)" 
+  />
+</svg>

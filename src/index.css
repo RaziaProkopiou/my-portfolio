@@ -1,69 +1,369 @@
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Custom Styles */
+html, body {
+  scroll-behavior: smooth;
+  /* overflow: hidden; */
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html {
+  transition: background-color 0.5s, color 0.5s;
 }
 
 body {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:focus {
+  outline: none;
+}
+a:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.orange-strike {
+  position: relative;
+  display: inline-block;
+}
+.orange-strike::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: #FF7700;
+  transform: translateY(-50%) rotate(-6deg);
+  pointer-events: none;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* ---------- Background / Galaxy & Stars ---------- */
+
+:root{
+  --galaxy-1: rgba(126, 87, 194, 0.12);
+  --galaxy-2: rgba(79, 70, 229, 0.10);
+  --galaxy-3: rgba(16, 185, 129, 0.04);
+  --galaxy-4: rgba(255, 209, 102, 0.03);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Layered galaxy gradient (soft, subtle motion) */
+.bg-galaxy-layer{
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 40% at 20% 30%, var(--galaxy-1) 0%, transparent 35%),
+    radial-gradient(40% 30% at 80% 70%, var(--galaxy-2) 0%, transparent 30%),
+    radial-gradient(30% 20% at 50% 20%, var(--galaxy-3) 0%, transparent 30%),
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.02));
+  filter: blur(36px) saturate(110%);
+  transform-origin: center;
+  animation: galaxyShift 18s ease-in-out infinite;
+  opacity: 1;
+}
+
+/* subtle movement so the galaxy feels alive */
+@keyframes galaxyShift {
+  0% { transform: translate3d(0px,0,0) scale(1); }
+  50% { transform: translate3d(-15px,-6px,0) scale(1.02); }
+  100% { transform: translate3d(0px,0,0) scale(1); }
+}
+
+/* Sun (light mode) */
+.sun {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 120px;
+  height: 120px;
+  z-index: -1;
+  background: radial-gradient(circle at 45% 45%, rgba(255,235,173,1) 0%, rgba(255,200,87,0.65) 35%);
+  border-radius: 50%;
+  filter: blur(1px) contrast(1.05);
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+.dark .sun { opacity: 0; transform: scale(0.96); }
+
+/* Moon (dark mode) */
+.moon {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 120px;
+  height: 120px;
+  z-index: -1;
+  background: radial-gradient(circle at 32% 30%, rgb(253, 247, 247) 0%, rgba(220,220,220,0.85) 50%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(2px) contrast(0.90);
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.dark .moon { opacity: 2; transform: scale(1); }
+
+/* STARFIELD using box-shadow for many scattered stars.
+   Two pseudo-layers give depth and independent twinkles.
+*/
+.stars,
+.stars::before,
+.stars::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* base faint star layer (many tiny distant stars) */
+.stars::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.45;
+  filter: blur(0.2px);
+  box-shadow:
+    10px 20px #fff, 50px 120px #fff, 80px 40px #fff, 150px 30px #fff, 220px 100px #fff,
+    260px 60px #fff, 300px 180px #fff, 340px 10px #fff, 380px 140px #fff, 420px 220px #fff,
+    460px 90px #fff, 500px 200px #fff, 540px 50px #fff, 600px 170px #fff, 660px 30px #fff,
+    720px 120px #fff, 780px 200px #fff, 820px 60px #fff, 900px 10px #fff, 960px 160px #fff;
+  transform: translateZ(0);
+  animation: twinkleSlow 6s linear infinite;
+  opacity: 0; /* hidden by default, shown only in dark mode */
+}
+.dark .stars::before { opacity: 0.35; }
+
+/* nearer brighter twinkling stars (fewer) */
+.stars::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  box-shadow:
+    30px 60px #fff, 120px 40px #fff, 200px 90px #fff, 310px 20px #fff,
+    410px 150px #fff, 520px 80px #fff, 640px 180px #fff, 760px 40px #fff,
+    860px 120px #fff, 980px 210px #fff;
+  filter: blur(0.25px);
+  opacity: 0;
+  animation: twinkle 3.5s ease-in-out infinite;
+}
+.dark .stars::after { opacity: 0.9; }
+
+/* Pink stars in light mode */
+.stars::before,
+.stars::after {
+  background: #e918a0 !important;
+  box-shadow:
+    10px 20px #e918a0, 50px 120px #e918a0, 80px 40px #e918a0, 150px 30px #e918a0, 220px 100px #e918a0,
+    260px 60px #e918a0, 300px 180px #e918a0, 340px 10px #e918a0, 380px 140px #e918a0, 420px 220px #e918a0,
+    460px 90px #e918a0, 500px 200px #e918a0, 540px 50px #e918a0, 600px 170px #e918a0, 660px 30px #e918a0,
+    720px 120px #e918a0, 780px 200px #e918a0, 820px 60px #e918a0, 900px 10px #e918a0, 960px 160px #e918a0;
+}
+
+.stars::after {
+  box-shadow:
+    30px 60px #e918a0, 120px 40px #e918a0, 200px 90px #e918a0, 310px 20px #e918a0,
+    410px 150px #e918a0, 520px 80px #e918a0, 640px 180px #e918a0, 760px 40px #e918a0,
+    860px 120px #e918a0, 980px 210px #e918a0;
+}
+
+.dark .stars::before,
+.dark .stars::after {
+  background: #fff !important;
+  box-shadow:
+    10px 20px #fff, 50px 120px #fff, 80px 40px #fff, 150px 30px #fff, 220px 100px #fff,
+    260px 60px #fff, 300px 180px #fff, 340px 10px #fff, 380px 140px #fff, 420px 220px #fff,
+    460px 90px #fff, 500px 200px #fff, 540px 50px #fff, 600px 170px #fff, 660px 30px #fff,
+    720px 120px #fff, 780px 200px #fff, 820px 60px #fff, 900px 10px #fff, 960px 160px #fff;
+}
+
+.dark .stars::after {
+  box-shadow:
+    30px 60px #fff, 120px 40px #fff, 200px 90px #fff, 310px 20px #fff,
+    410px 150px #fff, 520px 80px #fff, 640px 180px #fff, 760px 40px #fff,
+    860px 120px #fff, 980px 210px #fff;
+}
+
+/* twinkle animations with slight randomness via steps */
+@keyframes twinkle {
+  0% { opacity: 0.2; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.06); }
+  100% { opacity: 0.2; transform: scale(0.95); }
+}
+/* @keyframes twinkleSlow {
+  0% { opacity: 0.08; }
+  50% { opacity: 0.25; }
+  100% { opacity: 0.08; }
+} */
+
+/* ensure stars are only visible in dark mode */
+.dark .stars { opacity: 1; }
+
+/* small responsive tweaks */
+@media (max-width: 768px) {
+  .sun { width: 80px; height: 80px; right: 5%; top: 5%; }
+  .moon { width: 60px; height: 60px; right: 5%; top: 5%; }
+}
+
+/* ---------- DAY SKY LAYER ---------- */
+
+.sky { position: relative; overflow: hidden; }
+
+/* cloud */
+.cloud {
+  position: absolute;
+  top: 1%;
+  width: 160px;
+  height: 70px;
+  z-index: -1;
+  background: none;
+  pointer-events: none;
+  opacity: 0.95;
+  transition: opacity 0.5s;
+  --move: 40vw;
+  --duration: 95s;
+  --scale: 1.2;
+  animation: slow-move-var var(--duration) linear infinite alternate;
+}
+
+.cloud1 {
+  top: 8%;
+  left: 20%;
+  --move: 35vw; 
+  --duration: 85s;
+  --scale: 1;
+  opacity: 0.9;
+}
+
+.cloud2 {
+  top: 15%;
+  --move: 25vw; 
+  --duration: 80s;
+  --scale: 1.3;
+  opacity: 0.8;
+}
+
+.cloud3 {
+  top: 8%;
+  left: 60%;
+  --move: 35vw; 
+  --duration: 85s;
+  --scale: 1.1;
+  opacity: 0.85;
+}
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  filter: blur(2px);
+   border: 1px solid rgba(227, 227, 235, 0.2);
+  box-sizing: border-box;
+}
+.cloud::before {
+  width: 110px;
+  height: 90px;
+  left: 20px;
+  top: 10px;
+  background: radial-gradient(circle at 60% 40%, #fff 100%, #f8fae6 100%);
+}
+.cloud::after {
+  width: 90px;
+  height: 90px;
+  left: 80px;
+  top: 0;
+  background: radial-gradient(circle at 40% 60%, #fff 100%, #faf9e6 100%);
+}
+.cloud .cloud-bubble {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  filter: blur(1.5px);
+   border: 1px solid rgba(227, 227, 233, 0.2);
+  box-sizing: border-box;
+}
+.cloud .cloud-bubble.one {
+  width: 90px;
+  height: 80px;
+  left: 0;
+  top: 20px;
+  background: radial-gradient(circle at 60% 40%, #fff 100%, #e6f2fa 100%);
+   border: 1px solid rgba(230, 230, 236, 0.2); /* soft border */
+  box-sizing: border-box;
+}
+.cloud .cloud-bubble.two {
+  width: 110px;
+  height: 80px;
+  left: 110px;
+  top: 30px;
+  background: radial-gradient(circle at 40% 60%, #fff 40%, #e6f2fa 100%);
+}
+.dark .cloud {
+  opacity: 0.45;
+  filter: blur(2.5px) saturate(0.9);
+}
+.dark .cloud::before,
+.dark .cloud::after,
+.dark .cloud .cloud-bubble {
+  border: 2px solid rgba(180, 200, 255, 0.25);
+}
+
+@keyframes slow-move-var {
+  0% { transform: translateX(0) scale(var(--scale)); }
+  100% { transform: translateX(var(--move)) scale(var(--scale)); }
+}
+
+/* Sun rays (subtle radial beams around sun) */
+.sun-rays {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(255, 223, 128) 20%, transparent 80%);
+  filter: blur(35px);
+  z-index: -1;
+  opacity: 1;
+  overflow: hidden;
+}
+.dark .sun-rays {
+  top: 5%;
+  right: 4%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(102, 100, 96) 100%, transparent 90%);
+   overflow: hidden;
+}
+
+/* Slow pulse animation for back to top orb */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
 }

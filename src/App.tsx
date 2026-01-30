@@ -1,10 +1,17 @@
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import CaseStudyPage from "./pages/CaseStudyPage";
+import Layout from "./components/Layout";
 
-import './App.css'
-
-export default function App() {
+function App() {
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
-      <h1 className="text-4xl font-bold text-blue-500">Hello, Tailwind! 🎉</h1>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/case-studies/:id" element={<CaseStudyPage />} />
+      </Route>
+    </Routes>
   );
 }
+
+export default App;
