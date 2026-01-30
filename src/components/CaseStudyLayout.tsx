@@ -18,12 +18,12 @@ export default function CaseStudyLayout({
 }: CaseStudyLayoutProps) {
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
-      <a
-        href="/"
+      <Link
+        to="/"
         className="inline-block mb-16 text-indigo-600 hover:underline font-semibold"
       >
         ← Back to Portfolio
-      </a>
+      </Link>
 
       {/* Hero */}
       <header className="mb-16 grid md:grid-cols-[2fr_3fr]">
@@ -211,13 +211,12 @@ export default function CaseStudyLayout({
         </section>
       )}
 
-      <a
-        href="/"
+      <Link
+        to="/"
         className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition hover:no-underline"
       >
         ← Back to Portfolio
-      </a>
-
+      </Link>
       {/* Related */}
       {related && related.length > 0 && (
         <aside className="my-14 border-t pt-8">
