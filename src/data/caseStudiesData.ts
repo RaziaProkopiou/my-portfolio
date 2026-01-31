@@ -31,7 +31,7 @@ export interface Section {
   images?: string[];
   embedUrl?: string;
   embedUrls?: { label: string; url: string }[];
-  buttonUrl?: string;
+  buttonUrls?: { label: string; url: string }[];
   subsections?: {
     id?: string;
     heading?: string;
@@ -143,8 +143,17 @@ export const caseStudies: CaseStudy[] = [
             url: "https://embed.figma.com/proto/UKCJJOtM49fbcpiRmGmYum/Hartland-Country-House-Website?page-id=498%3A1125&node-id=498-1127&p=f&viewport=728%2C477%2C0.07&scaling=scale-down&content-scaling=fixed&starting-point-node-id=498%3A1127&embed-host=share",
           },
         ],
-        buttonUrl: "/",
+        buttonUrls: [
+          { label: "Live Demo", url: "https://RaziaProkopiou.github.io/hartland-country-house/" },
+          { label: "View Code", url: "https://github.com/RaziaProkopiou/hartland-country-house" },
+        ],
+        subsections: [
+          {
+            content: "Static build of the production site for portfolio purposes"
+          }
+        ],
       },
+
       {
         id: "retrospective",
         heading: "Retrospective",
@@ -233,7 +242,10 @@ export const caseStudies: CaseStudy[] = [
             url: "https://embed.figma.com/proto/000tlLrU3SgULYlOmEgWaR/Evergreen-Family-Therapy-Centre?page-id=0%3A1&node-id=2-61&p=f&viewport=45%2C-191%2C0.23&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2%3A61&embed-host=share",
           },
         ],
-        buttonUrl: "/",
+        buttonUrls: [
+          { label: "Live Site", url: "https://www.eftc.co.za/" },
+          { label: "View Code", url: "https://github.com/RaziaProkopiou/evergreen-therapy-website" },
+        ],
       },
       {
         id: "retrospective",
@@ -329,7 +341,6 @@ export const caseStudies: CaseStudy[] = [
             url: "https://embed.figma.com/proto/V5w7p1YaOSswtVYXFAlcsi/LocaShop?page-id=1%3A2&node-id=69-3354&p=f&viewport=-765%2C539%2C0.5&scaling=scale-down&content-scaling=fixed&starting-point-node-id=69%3A3354&show-proto-sidebar=1&embed-host=share",
           },
         ],
-        buttonUrl: "/",
       },
       {
         id: "retrospective",

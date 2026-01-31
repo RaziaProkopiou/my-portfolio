@@ -118,16 +118,18 @@ export default function CaseStudyLayout({
             </div>
           ) : null}
 
-          {s.buttonUrl && (
-            <a
-              href={s.buttonUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-indigo-600/20 border border-indigo-600 text-indigo-600 font-bold rounded-lg hover:bg-indigo-900 transition hover:no-underline"
-            >
-              Live Site | Code
-            </a>
-          )}
+          {s.buttonUrls &&
+            s.buttonUrls.map((btn, idx) => (
+              <a
+                key={idx}
+                href={btn.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-6 py-3 bg-indigo-600/20 border border-indigo-600 text-indigo-600 font-bold rounded-lg hover:bg-indigo-900 transition hover:no-underline mr-4"
+              >
+                {btn.label} ↗
+              </a>
+            ))}
 
           {/* Render subsections if present */}
           {s.subsections &&

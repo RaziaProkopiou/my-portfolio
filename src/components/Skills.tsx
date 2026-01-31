@@ -32,33 +32,70 @@ export default function Skills() {
         </ul>
       </div>
 
-      <h2 className="text-3xl font-bold mb-8 mt-16 text-gray-600 dark:text-gray-300">
-        Skills
+      <h2 className="text-3xl font-bold mb-8 mt-16 pt-16 text-gray-600 dark:text-gray-300">
+        Skills & Toolkit
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div className="p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300">
-          Figma
+
+      {/* Design */}
+      <h3 className="text-xl font-semibold mb-4 text-gray-600 dark:text-gray-300">Design</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="group relative p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:shadow-xl transition-shadow cursor-pointer">
+          <div className="font-medium">UI / UX Design</div>
+          <div className="absolute inset-0 bg-white dark:bg-gray-800 p-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex">
+            <p className="text-sm">User flows, wireframes, high-fidelity UI</p>
+          </div>
         </div>
-        <div className="p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300">
-          HTML / CSS
+        <div className="group relative p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:shadow-xl transition-shadow cursor-pointer">
+          <div className="font-medium">Figma</div>
+          <div className="absolute inset-0 bg-white dark:bg-gray-800 p-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex">
+            <p className="text-sm">Components, design systems, prototyping</p>
+          </div>
         </div>
-        <div className="p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300">
-          React (TS)
+      </div>
+
+      {/* Front-end Development */}
+      <h3 className="text-xl font-semibold mb-4 text-gray-600 dark:text-gray-300">Front-end Development</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="group relative p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:shadow-xl transition-shadow cursor-pointer">
+          <div className="font-medium">HTML & CSS</div>
+          <div className="absolute inset-0 bg-white dark:bg-gray-800 p-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex">
+            <p className="text-sm">Semantic, responsive layouts</p>
+          </div>
         </div>
-        <div className="p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300">
-          JavaScript
+        <div className="group relative p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:shadow-xl transition-shadow cursor-pointer">
+          <div className="font-medium">JavaScript</div>
+          <div className="absolute inset-0 bg-white dark:bg-gray-800 p-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex">
+            <p className="text-sm">Interactive UI & application logic</p>
+          </div>
         </div>
-        <div className="p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300">
-          Tailwind CSS
+        <div className="group relative p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:shadow-xl transition-shadow cursor-pointer">
+          <div className="font-medium">React + TypeScript</div>
+          <div className="absolute inset-0 bg-white dark:bg-gray-800 p-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex">
+            <p className="text-sm">Component-driven front-end development</p>
+          </div>
         </div>
-        <div className="p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300">
-          Git / GitHub
+        <div className="group relative p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:shadow-xl transition-shadow cursor-pointer">
+          <div className="font-medium">Next.js</div>
+          <div className="absolute inset-0 bg-white dark:bg-gray-800 p-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex">
+            <p className="text-sm">Routing, layouts, performance basics</p>
+          </div>
         </div>
-        <div className="p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300">
-          Next.js
+        <div className="group relative p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:shadow-xl transition-shadow cursor-pointer">
+          <div className="font-medium">Tailwind CSS</div>
+          <div className="absolute inset-0 bg-white dark:bg-gray-800 p-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex">
+            <p className="text-sm">Utility-first styling & theming</p>
+          </div>
         </div>
-        <div className="p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300">
-          UI / UX Design
+      </div>
+
+      {/* Workflow & Delivery */}
+      <h3 className="text-xl font-semibold mb-4 text-gray-600 dark:text-gray-300">Workflow & Delivery</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="group relative p-4 rounded-xl shadow-lg dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:shadow-xl transition-shadow cursor-pointer">
+          <div className="font-medium">Git / GitHub</div>
+          <div className="absolute inset-0 bg-white dark:bg-gray-800 p-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex">
+            <p className="text-sm">Version control & collaborative workflows</p>
+          </div>
         </div>
       </div>
     </section>
