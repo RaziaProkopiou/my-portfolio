@@ -221,8 +221,9 @@ a:focus-visible {
 
 /* small responsive tweaks */
 @media (max-width: 768px) {
-  .sun { width: 80px; height: 80px; right: 5%; top: 5%; }
-  .moon { width: 60px; height: 60px; right: 5%; top: 5%; }
+  .sun { display: none; }
+  .moon { display: none; }
+  .sun-rays { display: none; }
 }
 
 /* ---------- DAY SKY LAYER ---------- */
