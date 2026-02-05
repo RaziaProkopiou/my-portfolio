@@ -268,7 +268,7 @@ export const caseStudies: CaseStudy[] = [
     description: "Local marketplace mobile app connecting users with nearby businesses and service providers.",
     problem: "Local artisans and small businesses lacked an accessible, easy-to-use digital marketplace to showcase and sell their offerings.",
     solution: "Designed and built a mobile-first local marketplace using Figma, React Native, and TypeScript, focusing on discoverability, seller workflows, and scalable UI components.",
-    impact: "Created a realistic end-to-end demo app showcasing product discovery, seller dashboards, and add-to-cart flows — demonstrating strong UI/UX thinking, component architecture, and real-world front-end patterns.",
+    impact: "Created a realistic end-to-end demo app showcasing product discovery, seller dashboards, and add-to-cart flows, demonstrating strong UI/UX thinking, component architecture, and real-world front-end patterns.",
     headerImage: locaHeader,
     thumbnail: locaThumb,
     sections: [
@@ -340,6 +340,11 @@ export const caseStudies: CaseStudy[] = [
             label: "Mobile Prototype",
             url: "https://embed.figma.com/proto/V5w7p1YaOSswtVYXFAlcsi/LocaShop?page-id=1%3A2&node-id=69-3354&p=f&viewport=-765%2C539%2C0.5&scaling=scale-down&content-scaling=fixed&starting-point-node-id=69%3A3354&show-proto-sidebar=1&embed-host=share",
           },
+        ],
+         subsections: [
+          {
+            content: "In Development: UI/UX complete — development in progress."
+          }
         ],
       },
       {
