@@ -243,8 +243,13 @@ export const caseStudies: CaseStudy[] = [
           },
         ],
         buttonUrls: [
-          { label: "Live Site", url: "https://www.eftc.co.za/" },
+          { label: "Live Demo", url: "https://raziaprokopiou.github.io/evergreen-therapy-website/index.html" },
           { label: "View Code", url: "https://github.com/RaziaProkopiou/evergreen-therapy-website" },
+        ],
+         subsections: [
+          {
+            content: "Static build of the production site for portfolio purposes"
+          }
         ],
       },
       {
