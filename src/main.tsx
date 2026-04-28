@@ -26,7 +26,7 @@ import { BrowserRouter as Router } from "react-router-dom";
       .join("?");
     window.history.replaceState(
       null,
-      null,
+      "",
       l.pathname.slice(0, -1) + decoded + l.hash,
     );
   }
